@@ -7,10 +7,7 @@ class ElectronStore extends Conf {
 	constructor(options) {
 		const defaultCwd = (electron.app || electron.remote.app).getPath('userData');
 
-		options = {
-			name: 'config',
-			...options
-		};
+		options = Object.assign({name: 'config'}, options);
 
 		if (options.cwd) {
 			options.cwd = path.isAbsolute(options.cwd) ? options.cwd : path.join(defaultCwd, options.cwd);
